@@ -5,7 +5,7 @@ public class Model {
     private String name;
     private int pricePerDay;
 
-    public Model(Long id, String dni, String name, int pricePerDay) {
+    public Model(Long id, String name, int pricePerDay) {
         this.id = id;
         this.name = name;
         this.pricePerDay = pricePerDay;
