@@ -1,6 +1,7 @@
 package controller;
 
 
+import model.RentalOffice;
 import service.IRentalOfficeService;
 import service.RentalOfficeServiceImpl;
 
@@ -21,6 +22,10 @@ public class RentalOfficeController {
     public void deleteById(Long id){
         service.deleteById(id);
 
+    }
+
+    public RentalOffice findById(Long id){
+        return service.findById(id);
     }
 
     public ArrayList findAll(){

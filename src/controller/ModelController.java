@@ -1,6 +1,8 @@
 package controller;
 
 
+import model.Model;
+import model.RentalOffice;
 import service.ModelServiceImpl;
 import service.IModelService;
 
@@ -17,6 +19,11 @@ public class ModelController {
         service.add(name, pricePerDay);
 
     }
+
+    public Model findById(Long id){
+        return service.findById(id);
+    }
+
 
     public void deleteById(Long id){
         service.deleteById(id);
