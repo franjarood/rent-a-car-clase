@@ -15,8 +15,8 @@ public class RentalController {
         service = new RentalServiceImpl();
     }
 
-    public void add(LocalDate fecha1, LocalDate fecha2, Long idCar, Long idClient, Long idRentalOffice){
-        service.add(fecha1, fecha2, idCar, idClient, idRentalOffice);
+    public void add(Long idClient, LocalDate fecha, LocalDate fecha2, Long idRentalOffice, Long idCar){
+        service.add(idClient, fecha, fecha2, idRentalOffice, idCar );
 
     }
 
@@ -35,8 +35,8 @@ public class RentalController {
     }
 
 
-    public void update(Long id,String licensePlate, Long idModel, Long idRentalOffice){
-       // service.update(id, licensePlate, idModel, idRentalOffice);
+    public void update(Long id, Long idClient, LocalDate fecha, LocalDate fecha2, Long idRentalOffice, Long idCar){
+       service.update(id, idClient, fecha, fecha2, idRentalOffice, idCar );
     }
 
 

@@ -1,9 +1,6 @@
 package view;
 
-import controller.RentalController;
-import controller.ModelController;
-import controller.RentalOfficeController;
-import controller.ClientController;
+import controller.*;
 import model.Car;
 import model.Client;
 import model.RentalOffice;
@@ -19,6 +16,7 @@ public class RentalDialog {
     private ClientController clientController;
     private ModelController modelController;
     private RentalOfficeController rentalOfficeController;
+    private CarController carController;
     private Scanner scanner;
 
     public RentalDialog(){
@@ -26,6 +24,7 @@ public class RentalDialog {
         modelController = new ModelController();
         rentalOfficeController = new RentalOfficeController();
         clientController = new ClientController();
+        carController = new CarController();
 
     };
 
@@ -40,6 +39,36 @@ public class RentalDialog {
             int choice = scanner.nextInt();
             try {
                 if(choice == 1){
+                    scanner.nextLine();
+                    System.out.println(clientController.findAll());
+                    System.out.println("IdClient: ");
+                    Long idClient = scanner.nextLong();
+                    scanner.nextLine();
+                    System.out.println(clientController.findById(idClient));
+                    System.out.println("Introduce una fecha inicio (YYYY-MM-DD) ");
+                    String texto = scanner.nextLine();
+                    LocalDate fecha = LocalDate.parse(texto);
+                    System.out.println("Introduce una fecha fin (YYYY-MM-DD) ");
+                    String texto2 = scanner.nextLine();
+                    LocalDate fecha2 = LocalDate.parse(texto2);
+                    System.out.println(rentalOfficeController.findAll());
+                    System.out.println("IdRentalOffice: ");
+                    Long idRentalOffice = scanner.nextLong();
+                    scanner.nextLine();
+                    System.out.println(rentalOfficeController.findById(idRentalOffice));
+                    System.out.println(carController.findAll());
+                    System.out.println("IdCar: ");
+                    Long idCar = scanner.nextLong();
+                    System.out.println("El cliente " + clientController.findById(idClient) + " inicia el alquiler el día " + texto + " y finaliza el alquiler el " + fecha2 + " del vehiculo " + carController.findById(idCar) + " en la oficina " + rentalOfficeController.findById(idRentalOffice));
+                    rentalController.add(idClient,fecha, fecha2, idRentalOffice, idCar );
+                } else if (choice == 2) {
+                    System.out.println("Rental ID: ");
+                    Long id = scanner.nextLong();
+                    rentalController.deleteById(id);
+                } else if (choice == 3) {
+                    System.out.println(rentalController.findAll());
+                    System.out.println("Rental ID: ");
+                    Long id = scanner.nextLong();
                     scanner.nextLine();
                     System.out.println("Introduce una fecha inicio (YYYY-MM-DD) ");
                     String texto = scanner.nextLine();
@@ -56,25 +85,7 @@ public class RentalDialog {
                     System.out.println(clientController.findAll());
                     System.out.println("IdRentalOffice: ");
                     Long idRentalOffice = scanner.nextLong();
-                    rentalController.add(fecha, fecha2, idCar, idClient, idRentalOffice);
-                } else if (choice == 2) {
-                    System.out.println("Rental ID: ");
-                    int id = scanner.nextInt();
-                    rentalController.deleteById((long) id);
-                } else if (choice == 3) {
-                    System.out.println(rentalController.findAll());
-                    System.out.println("Rental ID: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.println("LicensePlate: ");
-                    String licensePlate = scanner.nextLine();
-                    System.out.println(modelController.findAll());
-                    System.out.println("IdModel: ");
-                    Long idModel = scanner.nextLong();
-                    System.out.println(rentalOfficeController.findAll());
-                    System.out.println("IdRentalOffice: ");
-                    Long idRentalOffice = scanner.nextLong();
-                    rentalController.update((long) id, licensePlate, (long)idModel, (long) idRentalOffice);
+                    rentalController.update( id,idClient, fecha, fecha2, idRentalOffice, idCar );
                 } else if (choice == 4) {
                     scanner.nextLine();
                     System.out.println("Id: ");
@@ -101,8 +112,8 @@ public class RentalDialog {
     }
 
     public void addInitialRentals(){
-        rentalController.add(LocalDate.of(2023,01,05),LocalDate.of(2023,10,05),1L, 1L, 1L);
-        rentalController.add(LocalDate.of(2023,02,05),LocalDate.of(2023,11,05),2L, 5L, 1L);
-
+        rentalController.add(1L, LocalDate.of(2026,1,2), LocalDate.of(2026,2,10), 1L, 1L);
+        rentalController.add(2L, LocalDate.of(2026,3,2), LocalDate.of(2026,4,10), 2L, 2L);
+        rentalController.add(1L, LocalDate.of(2026,5,2), LocalDate.of(2026,8,10), 3L, 3L);
     }
 }

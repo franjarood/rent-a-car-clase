@@ -4,13 +4,12 @@ import model.Rental;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public interface IRentalService {
     Rental findById(Long id);
-    void add(LocalDate startDate, LocalDate endDate, Long idCar, Long idClient, Long idRentalOffice);
+    void add(Long idClient, LocalDate startDate, LocalDate endDate, Long idRentalOffice, Long idCar);
     void deleteById(Long id);
     ArrayList findAll();
-    void update(LocalDate startDate, LocalDate endDate, Long idCar, Long idClient, Long idRentalOffice);
+    void update(Long id,Long idClient, LocalDate startDate, LocalDate endDate, Long idRentalOffice, Long idCar);
 
 }

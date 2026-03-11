@@ -26,8 +26,8 @@ public class RentalServiceImpl implements IRentalService{
 
     }
 
-    public void add(LocalDate startDate, LocalDate endDate, Long idCar, Long idClient, Long idRentalOffice) {
-        Rental rental = new Rental(startDate, endDate, carService.findById(idCar) ,clientService.findById(idClient), rentalOfficeService.findById(idRentalOffice));
+    public void add(Long idClient, LocalDate startDate, LocalDate endDate, Long idRentalOffice, Long idCar) {
+        Rental rental = new Rental(clientService.findById(idClient), startDate, endDate, rentalOfficeService.findById(idRentalOffice), carService.findById(idCar));
         repository.add(rental);
         Car car= carService.findById(idCar);
         car.addRental(rental);
@@ -52,8 +52,8 @@ public class RentalServiceImpl implements IRentalService{
     }
 
 
-    public void update(LocalDate startDate, LocalDate endDate, Long idCar, Long idClient, Long idRentalOffice) {
-        repository.update(new Rental(startDate, endDate, carService.findById(idCar) ,clientService.findById(idClient), rentalOfficeService.findById(idRentalOffice)));
+    public void update(Long id,Long idClient, LocalDate startDate, LocalDate endDate, Long idRentalOffice, Long idCar) {
+        repository.update(new Rental(id, clientService.findById(idClient), startDate, endDate, rentalOfficeService.findById(idRentalOffice), carService.findById(idCar)));
     }
 
 }

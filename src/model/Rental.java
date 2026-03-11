@@ -13,14 +13,14 @@ public class Rental {
     private RentalOffice rentalOffice;
 
 
-    public Rental(LocalDate startDate, LocalDate endDate, Car car, Client client, RentalOffice rentalOffice) {
+    public Rental(Client client, LocalDate startDate, LocalDate endDate,RentalOffice rentalOffice, Car car ) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.car = car;
         this.client = client;
         this.rentalOffice = rentalOffice;
     }
-    public Rental(Long id, LocalDate startDate, LocalDate endDate, Car car, Client client, RentalOffice rentalOffice) {
+    public Rental(Long id, Client client, LocalDate startDate, LocalDate endDate,RentalOffice rentalOffice, Car car ) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -82,6 +82,6 @@ public class Rental {
 
     @Override
     public String toString() {
-        return id + " " + startDate + " " + endDate;
+        return id + " " + startDate + " " + endDate + " " + car + " " + client + " " + rentalOffice ;
     }
 }

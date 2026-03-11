@@ -33,12 +33,12 @@ public class RentalOfficeDialog {
                     rentalOfficeController.add(address, feeForDelivery);
                 } else if (choice == 2) {
                     System.out.println("RentalOffice ID: ");
-                    int id = scanner.nextInt();
+                    Long id = scanner.nextLong();
                     rentalOfficeController.deleteById((long) id);
                 } else if (choice == 3) {
                     System.out.println(rentalOfficeController.findAll());
                     System.out.println("RentalOffice ID: ");
-                    int id = scanner.nextInt();
+                    long id = scanner.nextLong();
                     scanner.nextLine();
                     System.out.println("Address: ");
                     String address = scanner.nextLine();
