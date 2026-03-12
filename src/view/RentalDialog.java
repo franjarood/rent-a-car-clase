@@ -32,7 +32,7 @@ public class RentalDialog {
         do {
             System.out.println("\n************************** Rental Manager ********************************");
             System.out.println("\n\t1. Create Rental.\t\t\t\t4. Search Rental.");
-            System.out.println("\n\t2. Remove Rental.\t\t\t\t5. See All Rentals.");
+            System.out.println("\n\t2. Return Car.\t\t\t\t\t5. See All Rentals.");
             System.out.println("\n\t3. Update Rental.\t\t\t\t0. Back.");
             System.out.println("\n**************************************************************************");
             scanner = new Scanner(System.in);

@@ -33,6 +33,11 @@ public class CarRepository implements ICarRepository {
         return cars;
     }
 
+    public ArrayList findAllCarsAvailable(){
+        //TODO
+        return null;
+    }
+
     public void deleteById(Long id){
         for (Car car : cars) {
             if (car.getId() == id) {

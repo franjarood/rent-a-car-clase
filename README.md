@@ -45,6 +45,11 @@ En este caso, el coche necesita un modelo y una oficina. Para ello, lo que hacem
 Luego le llega al controller, el controller se lo envía tal cual a service y es justamente service quien se encarga de buscar el modelo y la oficina correspondientes a esos ids y crear el coche con ellos.
 
 Importante: CarService necesita usar el service de modelo y el service de oficina, por lo que es necesario inyectar ambos servicios en el service de coche.
-Por último a CarRepository le llega el coche ya creado, con su modelo y su oficina, y lo guarda sin necesidad de preocuparse por nada más.
+Por último a CarRepository le llega el coche ya creado, con su modelo y su oficina, y lo guarda sin necesidad de preocuparse por nada más.  
 
 
+Tareas día 12/03/2026:
+- Solo deben de poder alquilarse aquellos coches que estén disponibles en base al booleano isAvailable que he creado en Car.
+- Eso debe reflejarse cuando se usa el menu de Manage rentals --> Create Rental, solo debe dejar alquilar los coches disponibles.
+- He creado el método findAllCarsAvailable() en el repository de coche, implementadlo y propagarlo hasta el controller para usarlo en el menú de Create Rental.
+- En el menú de Manage Rentals, la opción 2 ha cambiado. Nunca vamos a querer borrar un alquiler (queremos mantener ese histórico). Lo que necesitamos es devolver un coche. Implementadlo.

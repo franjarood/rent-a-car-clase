@@ -8,6 +8,7 @@ public class Car {
     private Model model;
     private RentalOffice rentalOffice;
     private ArrayList<Rental> rentals;
+    private boolean isAvailable;
 
     public Car(Long id, String licensePlate, Model model, RentalOffice rentalOffice) {
         this.id = id;
@@ -15,6 +16,7 @@ public class Car {
         this.model = model;
         this.rentalOffice = rentalOffice;
         this.rentals = new ArrayList<>();
+        this.isAvailable = true;
     }
 
     public Car(String licensePlate, Model model, RentalOffice rentalOffice) {
@@ -22,6 +24,7 @@ public class Car {
         this.model = model;
         this.rentalOffice = rentalOffice;
         this.rentals = new ArrayList<>();
+        this.isAvailable = true;
     }
 
 
@@ -63,6 +66,14 @@ public class Car {
 
     public void addRental(Rental rental) {
         rentals.add(rental);
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     @Override
